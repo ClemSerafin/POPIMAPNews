@@ -458,7 +458,7 @@ Function Log-Start {
 
   write-log "---------- Connecting to MG Graph ----------"
 
-  Connect-MgGraph -AppId $AppId -TenantId $TenantID -CertificateThumbprint $CertificateThumbprint
+ # Connect-MgGraph -AppId $AppId -TenantId $TenantID -CertificateThumbprint $CertificateThumbprint
 
 # Construct URI and body needed for authentication
 $uri = "https://login.microsoftonline.com/$tenantId/oauth2/v2.0/token"
@@ -474,7 +474,7 @@ $token = ($tokenRequest.Content | ConvertFrom-Json).access_token
 $Headers = @{
             'Content-Type'  = "application\json"
             'Authorization' = "Bearer $Token" }
-
+Connect-MgGraph -AccessToken $token
    
 $1 = $(get-date).AddDays(-7)
 #  $signInsPopImap = Get-MgAuditLogSignIn -All -Filter "CreatedDateTime gt $($1.ToString("yyyy-MM-ddTHH:mm:ssZ")) and (ClientAppUsed eq 'POP3' or ClientAppUsed eq 'IMAP4')" 
