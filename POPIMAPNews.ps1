@@ -16,7 +16,7 @@ CSV File
 	===========================================================================
     NAME    : POPIMAPNews.ps1
     VERSION : 0.1
-    AUTHOR  : Cl�ment SERAFIN
+    AUTHOR  : Clément SERAFIN
     DATE    : 06/09/2022
     USAGE   : .\POPIMAPNews.ps1
     COMMENTS:     
@@ -35,20 +35,20 @@ http://msblog.fr
 Function Log-Start {
     <#
     .DESCRIPTION
-      Crée un log file avec le path et nom qu'on lui passe en paramètre. Check si le log file existe et le supprime pour en créer un nouveau.
-      Une fois le log file créé, écrit dedans les données initiales
+      CrÃ©e un log file avec le path et nom qu'on lui passe en paramÃ¨tre. Check si le log file existe et le supprime pour en crÃ©er un nouveau.
+      Une fois le log file crÃ©Ã©, Ã©crit dedans les donnÃ©es initiales
   
     .PARAMETER LogPath
-      Mandatory. Path de création du log. Exemple: C:\Windows\Temp
+      Mandatory. Path de crÃ©ation du log. Exemple: C:\Windows\Temp
   
     .PARAMETER LogName
-      Mandatory. Nom du log file à créer. Exemple: Test_Script.log
+      Mandatory. Nom du log file Ã  crÃ©er. Exemple: Test_Script.log
         
     .PARAMETER ScriptVersion
-      Mandatory. Version du script à écrire dans le log. Example: 1.0
+      Mandatory. Version du script Ã  Ã©crire dans le log. Example: 1.0
   
     .OUTPUTS
-      Log file créé
+      Log file crÃ©Ã©
   
     .EXAMPLE
       Log-Start -LogPath "C:\Windows\Temp" -LogName "Test_Script.log" -ScriptVersion "1.5"
@@ -93,13 +93,13 @@ Function Log-Start {
   Function Log-Finish {
     <#
     .DESCRIPTION
-      Ecrit les logs avec les donnés de fin et exit le script
+      Ecrit les logs avec les donnÃ©s de fin et exit le script
     
     .PARAMETER LogPath
-      Mandatory. Full path du log file sur lequel on veut écrire les donnés de fin
+      Mandatory. Full path du log file sur lequel on veut Ã©crire les donnÃ©s de fin
   
     .PARAMETER NoExit
-      Optional. Si ce paramètre est à True, la fonction ne va pas exit le script
+      Optional. Si ce paramÃ¨tre est Ã  True, la fonction ne va pas exit le script
   
     .EXAMPLE
       Log-Finish -LogPath "C:\Windows\Temp\Test_Script.log"
@@ -137,22 +137,22 @@ Function Log-Start {
       Ecrit une ligne dans le fichier de logs
     
     .PARAMETER DBG
-      Optional. Placé à la fin de la ligne de log il signale une INFORMATION
+      Optional. PlacÃ© Ã  la fin de la ligne de log il signale une INFORMATION
   
     .PARAMETER SCS
-      Optional. Placé à la fin de la ligne de log il signale un SUCCESSFUL
+      Optional. PlacÃ© Ã  la fin de la ligne de log il signale un SUCCESSFUL
   
     .PARAMETER WAR
-      Optional. Placé à la fin de la ligne de log il signale un WARNING
+      Optional. PlacÃ© Ã  la fin de la ligne de log il signale un WARNING
   
     .PARAMETER ERR
-      Optional. Placé à la fin de la ligne de log il signale une ERREUR
+      Optional. PlacÃ© Ã  la fin de la ligne de log il signale une ERREUR
   
     .EXAMPLE
      Write-Log  " > Pikachu is the best" "DBG"
      Write-Log  " > Pikachu vient de lancer fatal-foudre" "SCS"
      Write-Log  " > Pikachu est en surtension" "WAR"
-     Write-Log  " > Pikachu a échoué à lancer vive-attaque" "ERR"
+     Write-Log  " > Pikachu a Ã©chouÃ© Ã  lancer vive-attaque" "ERR"
     #>
     
       Param (
@@ -203,13 +203,13 @@ Function Log-Start {
   Function Start-Script {
   <# 
     .Description 
-      Initie le script avec la vérification des paramètres PS ou du RunAsAdmin
+      Initie le script avec la vÃ©rification des paramÃ¨tres PS ou du RunAsAdmin
   
     .PARAMETER DisplayParameter
-      Optional. Affiche les paramètres trouvés par la fonction dans le log
+      Optional. Affiche les paramÃ¨tres trouvÃ©s par la fonction dans le log
   
     .PARAMETER Color
-      Optional. Initie la couleur déclaré dans la fonction pour la console PS
+      Optional. Initie la couleur dÃ©clarÃ© dans la fonction pour la console PS
   
     .Example
       C:\PS>Start-Script -DisplayParameter -Color
@@ -262,7 +262,7 @@ Function Log-Start {
   Function End-Script {
   <# 
   .Description 
-  Effectue une stat des success, failed et warning. Log les résultats et ferme le script
+  Effectue une stat des success, failed et warning. Log les rÃ©sultats et ferme le script
   .Example
   C:\PS>End-Script
   #>     
@@ -303,7 +303,7 @@ Function Log-Start {
   { 
       <# 
       .Description 
-          Récupérer le contenu d'un fichier INI en tant que variables
+          RÃ©cupÃ©rer le contenu d'un fichier INI en tant que variables
            
           #Requiert -Version 2.0 de powershell
           # http://www.microsoft.com/en-us/download/confirmation.aspx?id=20430
@@ -314,20 +314,20 @@ Function Log-Start {
           System.Collections.Hashtable
           
       .Parameter FilePath 
-          Spécifie le path du fichier ini
+          SpÃ©cifie le path du fichier ini
           
       .Example 
           $ReadINIfile = Get-IniContent "C:\myinifile.ini" 
           ----------- 
           Description 
-          Mémorise le chemin c:\myinifile.ini dans la variable $ReadINIfile 
+          MÃ©morise le chemin c:\myinifile.ini dans la variable $ReadINIfile 
           
        .Example 
           C:\PS>$ReadINIfile = Get-IniContent "c:\settings.ini" 
           C:\PS>$ReadINIfile["Section"]["Key"] 
           ----------- 
           Description 
-          Récupère la valeur de "Key" de la section "Section" depuis le fichier INI C:\settings.ini  
+          RÃ©cupÃ¨re la valeur de "Key" de la section "Section" depuis le fichier INI C:\settings.ini  
       #> 
   #----------------------------------------------------------------------------------------------------
       [CmdletBinding()] 
@@ -430,7 +430,7 @@ Function Log-Start {
   # Lecture du fichier INI
   # ===================================================================================================
   
-  # Récupération chemin du script + Nom du script + Nom du fichier INI (le nom du INI doit être identique à celui du script)
+  # RÃ©cupÃ©ration chemin du script + Nom du script + Nom du fichier INI (le nom du INI doit Ãªtre identique Ã  celui du script)
   Write-log "# Loading ini"
   Write-log "# PSCommandPath:$PSCommandPath"
   $PSScriptRoot = Split-Path -Parent -Path $MyInvocation.MyCommand.Definition
@@ -438,10 +438,10 @@ Function Log-Start {
   $INIname = $scriptName + "ini"
   $iniPath = $c_ScriptPath + "\" + $INIname
   
-  # récupère le contenu du fichier INI
+  # rÃ©cupÃ¨re le contenu du fichier INI
   $ReadINIfile = Get-IniContent ($iniPath) 		
   
-  # récupère les variables
+  # rÃ©cupÃ¨re les variables
   [string]$AppId=$ReadINIfile["Office365"]["AppId"]
   [string]$TenantID=$ReadINIfile["Office365"]["TenantID"]
   [string]$CertificateThumbprint=$ReadINIfile["Office365"]["CertificateThumbprint"]
@@ -558,7 +558,7 @@ $ContentBase64 = [convert]::ToBase64String($AttachmentFile)
            "toRecipients" = @(
            @{
              "emailAddress" = @{"address" = $EmailRecipient }
-           }  <# ,
+           } ) <# ,
             @{
              "emailAddress" = @{"address" = ""}
            } 
