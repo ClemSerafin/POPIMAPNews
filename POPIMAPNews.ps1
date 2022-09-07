@@ -477,7 +477,7 @@ $Headers = @{
 Connect-MgGraph -AccessToken $token
    
 $1 = $(get-date).AddDays(-7)
-#  $signInsPopImap = Get-MgAuditLogSignIn -All -Filter "CreatedDateTime gt $($1.ToString("yyyy-MM-ddTHH:mm:ssZ")) and (ClientAppUsed eq 'POP3' or ClientAppUsed eq 'IMAP4')" 
+ $signInsPopImap = Get-MgAuditLogSignIn -All -Filter "CreatedDateTime gt $($1.ToString("yyyy-MM-ddTHH:mm:ssZ")) and (ClientAppUsed eq 'POP3' or ClientAppUsed eq 'IMAP4')" 
 
 $FirstShoot = @()
 foreach ($status in $signInsPopImap) {
