@@ -481,19 +481,29 @@ $1 = $(get-date).AddDays(-7)
 
 $FirstShoot = @()
 foreach ($status in $signInsPopImap) {
-$extract = $status | select UserDisplayName,UserPrincipalName,CreatedDateTime,ClientAppUsed,@{Label="AdditionalDetails";Expression={$_.Status.AdditionalDetails}}
+$extract = $status | select UserDisplayName,UserPrincipalName,CreatedDateTime,ClientAppUsed
 $extract | Add-Member -MemberType NoteProperty -Name Status -Value $null -Force
-if ($extract.AdditionalDetails){
-$extract.Status ="Failure"
+$Add = $($status.Status.FailureReason)
+if ($Add){
+if ($Add -eq "Other.") {
+$extract.Status ="Success"
+$extract.Status
+$FirstShoot += $extract
+}else{
+$extract.Status ="Failure"}
+$extract.Status
 }
 else {
+$Add
 $extract.Status ="Success"
+$extract.Status
 $FirstShoot += $extract
-}}
+}
+$Add = $null
+}
 
-
-$dedoublonage = $FirstShoot | Sort-Object -Property UserPrincipalName -Unique 
-$dedoublonagetri = $dedoublonage |  Sort-Object -Property CreatedDateTime
+$dedoublonage = $FirstShoot |  Sort-Object -Property CreatedDateTime
+$dedoublonagetri = $dedoublonage | Sort-Object -Property UserPrincipalName -Unique 
 $CSVpath = $CSVpath -replace ('"','')
 $csvName = "PopImapUsage-" + $(Get-Date -Format MM-dd-yyyy-HHmmss) + ".csv"
 $exportcsv = $CSVpath + $csvName 
